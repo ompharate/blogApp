@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>techtrendify</title>
+  </head>
+  <body>  
+    <%- include('./partials/nav') %>
+<div class="w-full flex flex-row justify-start ">
+    <div class="flex flex-wrap">
+      <% blogs.forEach(blog => { %>         
+        <div class="rounded-lg p-2">
+          <div class="bg-gray-200 p-2">
+            <img class="object-contain" width="300px" src="<%= blog.coverImageURL %>"></img>
+            <h2 class="font-bold"><%= blog.title %></h2>
+          </div>
+          <a class="h-10 w-18 p-2 bg-red-500 text-white rounded-lg font-bold float-right" href="/blog/view/<%= blog._id %>">view</a>
+        </div>
+        <% }) %>
+    </div>
+  </div>
+    <%- include('./partials/script') %>
+  </body>
+</html>

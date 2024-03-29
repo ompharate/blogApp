@@ -1,0 +1,13 @@
+<nav class="bg-red-500">
+  <ul class="flex justify-evenly p-4 text-white font-bold">
+    <li><a href="/">Techtrendify.com</a></li>
+    <% if (locals.user) { %>
+    <li><a href="/blog/add-new">Add blog</a></li>
+    <li><a href="/user/logout">logout</a></li>
+    <li><a href=""><%= user.email %></a></li>
+    <% } else { %>
+    <li><a href="/user/signin">login</a></li>
+    <li><a href="/user/signup">signup</a></li>
+    <% } %>
+  </ul>
+</nav>

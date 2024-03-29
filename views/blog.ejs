@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>techtrendify</title>
+  </head>
+  <body>
+    <%- include('./partials/nav') %>
+    <div class="w-full justify-start">
+      <div class="rounded-lg p-2">
+        <div class="p-10">
+          <img
+            class="object-contain"
+            src="http://localhost:8001/<%= blogData.coverImageURL %>"
+          />
+          <h1 class="font-bold"><%= blogData.title %></h1>
+          <p><%= blogData.body %></p>
+        </div>
+
+        <div class="p-2">
+          <% if (locals.user) { %>
+           
+            <form action="/blog/comment/<%= blogData._id %>" method="post">
+              <input
+              class="border border-gray-500"
+              type="text"
+              name="content"
+              placeholder="enter your comment"
+              />
+              <button class="p-2 bg-blue-400 text-white">submit</button>
+            </form>
+            <% } %>
+          <% commentData.forEach(comment => { %>
+          <div class="border border-gray-500">
+            <h1 class="font-bold"><%= comment.createdBy.fullName %></h1>
+            <h3><%= comment.content %></h3>
+          </div>
+          <% }) %>
+        </div>
+      </div>
+    </div>
+
+    <%- include('./partials/script') %>
+  </body>
+</html>
